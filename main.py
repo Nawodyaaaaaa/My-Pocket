@@ -1,5 +1,5 @@
 """
-main.py - command-line interface for the Rupee finance agent.
+main.py - command-line interface for the My Pocket finance agent.
 
 Run:  python main.py
       python main.py --model qwen3:4b
@@ -32,7 +32,7 @@ def setup_logging():
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Rupee - personal finance agent (Ollama)")
+    parser = argparse.ArgumentParser(description="My Pocket - personal finance agent (Ollama)")
     parser.add_argument("--model", default=os.getenv("OLLAMA_MODEL", ""),
                         help="Ollama model name. Default: first suitable model you already have.")
     args = parser.parse_args()
@@ -42,7 +42,7 @@ def main():
     agent = FinanceAgent(model=args.model)
 
     print("=" * 60)
-    print(f" Rupee - Personal Finance Agent   (model: {args.model})")
+    print(f" My Pocket - Personal Finance Agent   (model: {args.model})")
     print(" Commands: /reset = clear memory, /exit = quit")
     print("=" * 60)
 
@@ -67,7 +67,7 @@ def main():
         except Exception as e:  # e.g. Ollama not running
             answer = (f"Error talking to the model: {e}\n"
                       "Is Ollama running? Try: ollama serve  and  ollama pull " + args.model)
-        print(f"\nRupee: {answer}")
+        print(f"\nMy Pocket: {answer}")
 
 
 if __name__ == "__main__":

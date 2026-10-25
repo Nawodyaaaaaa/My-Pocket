@@ -1,6 +1,6 @@
-# Rupee — Personal Finance Agent (Ollama)
+# My Pocket — Personal Finance Agent (Ollama)
 
-An AI agent that tracks expenses in **Sri Lankan Rupees (LKR)** and answers spending questions.
+An AI agent that tracks expenses in **Sri Lankan My Pockets (LKR)** and answers spending questions.
 It runs a **local LLM through Ollama** and decides on its own which tools to call, in what order,
 to reach an answer.
 
@@ -81,7 +81,7 @@ python -m pytest tests -v
 ## Example prompts
 1. `How much did I spend this month, and what's my biggest category?`
 2. `How much did I spend on food in October in USD, and am I over budget?` *(multi-step)*
-3. `I spent 1500 rupees on lunch today. Add it, then make my October report.` *(multi-step, writes files)*
+3. `I spent 1500 My Pockets on lunch today. Add it, then make my October report.` *(multi-step, writes files)*
 
 Follow-up to show memory: after prompt 2, ask `What about in euros?`
 

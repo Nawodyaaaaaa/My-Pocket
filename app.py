@@ -1,5 +1,5 @@
 """
-app.py - web chat screen for the Rupee finance agent (Streamlit).
+app.py - web chat screen for the My Pocket finance agent (Streamlit).
 
 Run:  streamlit run app.py
 """
@@ -14,11 +14,11 @@ from datetime import date
 
 logging.basicConfig(level=logging.INFO, format="[trace] %(message)s")
 
-st.set_page_config(page_title="Rupee - Finance Agent", page_icon="💰", layout="wide")
+st.set_page_config(page_title="My Pocket - Finance Agent", page_icon="💰", layout="wide")
 
 # ------------------------------------------------------------- sidebar
 with st.sidebar:
-    st.title("💰 Rupee")
+    st.title("💰 My Pocket")
     st.caption("Personal finance agent · local LLM via Ollama")
 
     models = installed_models()
@@ -35,7 +35,7 @@ with st.sidebar:
         "How much did I spend this month, and what's my biggest category?",
         "How much did I spend on food this month in USD, and am I over budget?",
         "What about in euros?",
-        "I spent 1500 rupees on lunch today. Add it, then make this month's report.",
+        "I spent 1500 My Pockets on lunch today. Add it, then make this month's report.",
         "Add an expense of -500 for pizza",
     ]
     if st.button("▶️ Run full demo", type="primary", use_container_width=True):
@@ -84,7 +84,7 @@ if not history:
     examples = [
         "How much did I spend this month, and what's my biggest category?",
         "How much did I spend on food this month in USD, and am I over budget?",
-        "I spent 1500 rupees on lunch today. Add it, then make this month's report.",
+        "I spent 1500 My Pockets on lunch today. Add it, then make this month's report.",
     ]
     cols = st.columns(3)
     for col, ex in zip(cols, examples):

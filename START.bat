@@ -1,5 +1,5 @@
 @echo off
-title Rupee - Finance Agent
+title My Pocket - Finance Agent
 cd /d "%~dp0"
 
 echo Checking Ollama...
@@ -11,6 +11,6 @@ echo Installing Python packages (first time only)...
 python -m pip install -q -r requirements.txt
 
 echo.
-echo Starting Rupee in your browser...
+echo Starting My Pocket in your browser...
 python -m streamlit run app.py
 pause

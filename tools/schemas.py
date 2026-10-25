@@ -26,7 +26,7 @@ def _tool(name, description, properties, required):
 
 TOOL_SCHEMAS = [
     _tool("add_expense",
-          "Save a new expense in Sri Lankan Rupees (LKR). Use when the user says they spent money.",
+          "Save a new expense in Sri Lankan My Pockets (LKR). Use when the user says they spent money.",
           {
               "amount": {"type": "number", "description": "Amount in LKR, e.g. 1500"},
               "category": {"type": "string", "enum": CATEGORIES, "description": "Expense category"},

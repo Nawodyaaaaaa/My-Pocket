@@ -29,11 +29,11 @@ log = logging.getLogger("agent")
 
 def build_system_prompt() -> str:
     today = date.today()
-    return f"""You are Rupee, a personal finance assistant for a user in Sri Lanka.
+    return f"""You are My Pocket, a personal finance assistant for a user in Sri Lanka.
 Today is {today.isoformat()}. The current month is {today:%Y-%m}.
 
 RULES
-- All money is stored in Sri Lankan Rupees (LKR). Write amounts like "Rs. 12,500".
+- All money is stored in Sri Lankan My Pockets (LKR). Write amounts like "Rs. 12,500".
 - ALWAYS use tools to get numbers. Never guess or invent amounts.
 - If a question needs several steps, call tools one after another
   (e.g. get_spending_summary -> convert_currency -> check_budget).

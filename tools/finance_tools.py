@@ -86,7 +86,7 @@ def add_expense(amount: float, category: str, note: str = "", date_str: str = ""
     """Save a new expense (in LKR) to the expenses file.
 
     Args:
-        amount: Amount spent in Sri Lankan Rupees. Must be > 0.
+        amount: Amount spent in Sri Lankan My Pockets. Must be > 0.
         category: One of food, transport, bills, shopping, entertainment, health, education, other.
         note: Short description, e.g. "lunch at canteen".
         date_str: Date as YYYY-MM-DD. Empty means today.
