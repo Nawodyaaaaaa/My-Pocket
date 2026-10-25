@@ -1,0 +1,9 @@
+{
+  "food": 30000,
+  "transport": 12000,
+  "bills": 15000,
+  "shopping": 8000,
+  "entertainment": 5000,
+  "health": 5000,
+  "education": 10000
+}

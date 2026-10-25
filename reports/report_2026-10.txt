@@ -1,0 +1,27 @@
+MONTHLY SPENDING REPORT - 2026-10
+==========================================
+Total spent : Rs. 72,710.00  (~USD 242.37)
+Expenses    : 43
+Top category: food
+
+BY CATEGORY
+------------------------------------------
+food           Rs.  31,940.00  #############
+bills          Rs.  10,640.00  ####
+transport      Rs.   9,410.00  ###
+education      Rs.   8,000.00  ###
+shopping       Rs.   4,700.00  #
+health         Rs.   4,080.00  #
+entertainment  Rs.   3,940.00  #
+
+BUDGET CHECK
+------------------------------------------
+food            106.5% of Rs. 30,000  [OVER budget]
+transport        78.4% of Rs. 12,000  [ok]
+bills            70.9% of Rs. 15,000  [ok]
+shopping         58.8% of Rs. 8,000  [ok]
+entertainment    78.8% of Rs. 5,000  [ok]
+health           81.6% of Rs. 5,000  [warning (80%+ used)]
+education        80.0% of Rs. 10,000  [warning (80%+ used)]
+
+Generated: 2026-10-25 12:36
