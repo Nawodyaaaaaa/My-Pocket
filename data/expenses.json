@@ -537,5 +537,54 @@
     "amount": 1500.0,
     "category": "food",
     "note": "lunch"
+  },
+  {
+    "id": 78,
+    "date": "2026-10-25",
+    "amount": 1500.0,
+    "category": "food",
+    "note": "lunch"
+  },
+  {
+    "id": 79,
+    "date": "2026-10-25",
+    "amount": 1500.0,
+    "category": "food",
+    "note": "lunch"
+  },
+  {
+    "id": 80,
+    "date": "2026-10-25",
+    "amount": 1500.0,
+    "category": "food",
+    "note": "lunch"
+  },
+  {
+    "id": 81,
+    "date": "2026-10-25",
+    "amount": 1500.0,
+    "category": "food",
+    "note": "lunch"
+  },
+  {
+    "id": 82,
+    "date": "2026-10-25",
+    "amount": 1500.0,
+    "category": "other",
+    "note": "lunch"
+  },
+  {
+    "id": 83,
+    "date": "2026-10-25",
+    "amount": 1500.0,
+    "category": "food",
+    "note": "lunch"
+  },
+  {
+    "id": 84,
+    "date": "2026-10-25",
+    "amount": 1500.0,
+    "category": "other",
+    "note": "lunch"
   }
 ]

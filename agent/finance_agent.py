@@ -33,10 +33,12 @@ def build_system_prompt() -> str:
 Today is {today.isoformat()}. The current month is {today:%Y-%m}.
 
 RULES
-- All money is stored in Sri Lankan My Pockets (LKR). Write amounts like "Rs. 12,500".
+- All money is stored in Sri Lankan Rupees (LKR). Write amounts like "Rs. 12,500".
 - ALWAYS use tools to get numbers. Never guess or invent amounts.
 - If a question needs several steps, call tools one after another
   (e.g. get_spending_summary -> convert_currency -> check_budget).
+- Use the real tool-calling feature. Never write a tool call as text or JSON in your answer.
+- Answer every part of the question. If it asks "am I over budget?", you must call check_budget.
 - "This month" means {today:%Y-%m}. "Last month" means the month before it.
 - If a tool returns an error, explain it simply or fix the arguments and retry once.
 - If the request is unclear (e.g. no amount given), ask the user instead of guessing.
@@ -68,6 +70,26 @@ def pick_model(preferred: str = "") -> str:
     return models[0] if models else (preferred or "llama3.2")
 
 
+def find_text_tool_calls(text: str) -> list:
+    """Find tool calls the model typed as JSON text, e.g.
+    {"name": "get_spending_summary", "parameters": {"month": "2026-10"}}
+    Returns a list of (tool_name, arguments) pairs. Only known tools count."""
+    decoder = json.JSONDecoder()
+    found, i = [], text.find("{")
+    while i != -1:
+        try:
+            obj, end = decoder.raw_decode(text, i)
+        except ValueError:
+            i = text.find("{", i + 1)
+            continue
+        if isinstance(obj, dict) and obj.get("name") in TOOL_FUNCTIONS:
+            args = obj.get("parameters") or obj.get("arguments") or {}
+            if isinstance(args, dict):
+                found.append((obj["name"], args))
+        i = text.find("{", end)
+    return found
+
+
 class FinanceAgent:
     def __init__(self, model: str = "llama3.2"):
         self.model = model
@@ -97,19 +119,26 @@ class FinanceAgent:
 
         for step in range(1, MAX_STEPS + 1):
             # 1. Ask the model what to do next
-            response = ollama.chat(model=self.model, messages=self.messages, tools=TOOL_SCHEMAS)
+            response = ollama.chat(model=self.model, messages=self.messages, tools=TOOL_SCHEMAS,
+                                   options={"temperature": 0})  # 0 = steadier tool choices
             msg = response.message
             self.messages.append(msg)  # keep the model's turn in memory
 
+            # Small models sometimes WRITE a tool call as text instead of
+            # really calling it. Catch that and run it anyway.
+            calls = [(c.function.name, c.function.arguments or {}) for c in (msg.tool_calls or [])]
+            if not calls:
+                calls = find_text_tool_calls(msg.content or "")
+                if calls:
+                    log.info("STEP %d | model wrote tool call(s) as text -> running them", step)
+
             # 2. No tool requested -> this is the final answer
-            if not msg.tool_calls:
+            if not calls:
                 log.info("STEP %d | final answer", step)
                 return msg.content
 
             # 3. Run every tool the model asked for
-            for call in msg.tool_calls:
-                name = call.function.name
-                args = call.function.arguments or {}
+            for name, args in calls:
                 log.info("STEP %d | CALL   %s(%s)", step, name, json.dumps(args, ensure_ascii=False))
 
                 result = self.run_tool(name, args)
