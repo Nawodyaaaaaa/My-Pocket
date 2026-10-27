@@ -92,3 +92,11 @@ Follow-up to show memory: after prompt 2, ask `What about in euros?`
 ## Credits
 - [Ollama](https://ollama.com) and the [`ollama` Python library](https://github.com/ollama/ollama-python)
 - AI coding assistants were used for help and debugging (see the report appendix).
+
+
+## Team
+| Member | Role |
+|---|---|
+| Sanjula Nawodya | Agent loop, system prompt, web UI, repository |
+| Chamod Mihiranga | Tools: gifts category, SGD currency |
+| Komul Harana | Testing: agent tests, currency and category tests |

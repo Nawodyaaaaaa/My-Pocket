@@ -67,3 +67,5 @@ def test_generate_report_writes_file():
     r = ft.generate_report("2026-10")
     assert r["ok"]
     assert (ft.BASE_DIR / r["file"]).exists()
+
+
