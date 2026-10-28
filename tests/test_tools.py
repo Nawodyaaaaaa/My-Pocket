@@ -69,3 +69,19 @@ def test_generate_report_writes_file():
     assert (ft.BASE_DIR / r["file"]).exists()
 
 
+
+def test_convert_to_euro():
+    r = ft.convert_currency(32500, "LKR", "EUR")
+    assert r["ok"] and r["result"] == 100.0
+
+
+def test_convert_to_pound():
+    r = ft.convert_currency(38500, "LKR", "GBP")
+    assert r["ok"] and r["result"] == 100.0
+
+
+def test_list_expenses_newest_first():
+    r = ft.list_expenses("2026-10", "food", 5)
+    dates = [e["date"] for e in r["expenses"]]
+    assert r["ok"] and dates == sorted(dates, reverse=True)
+
