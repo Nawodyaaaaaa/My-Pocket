@@ -94,9 +94,9 @@ Follow-up to show memory: after prompt 2, ask `What about in euros?`
 - AI coding assistants were used for help and debugging (see the report appendix).
 
 
-## Team
-| Member | Role |
-|---|---|
-| Sanjula Nawodya | Agent loop, system prompt, web UI, repository |
-| Chamod Mihiranga | Tools: gifts category, SGD currency |
-| Komul Harana | Testing: agent tests, currency and category tests |
+   ## Team
+   | Member | Role |
+   |---|---|
+   | Sanjula Nawodya | Agent loop, system prompt, web UI, repository |
+   | Chamod Mihiranga | Fixed agent tests to use temporary data (PR #1) |
+   | Komul Harana | Testing: EUR, GBP and list_expenses tests |
